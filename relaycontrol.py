@@ -54,8 +54,8 @@ def action(deviceName, action):
 
     templateData = {
         'RELAY1' : r1stat,
-        'RELAY2' : r1stat,
-        'RELAY3' : r1stat,
+        'RELAY2' : r2stat,
+        'RELAY3' : r3stat,
     }
     return render_template('index.html', **templateData)
 
