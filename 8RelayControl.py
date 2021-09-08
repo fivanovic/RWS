@@ -55,7 +55,7 @@ def index():
         'RELAY7' : r7stat,
         'RELAY8' : r8stat,
     }
-    return render_template('index.html', **templateData)
+    return render_template('index8.html', **templateData)
 
 @app.route("/<deviceName>/<action>")
 def action(deviceName, action):
@@ -109,7 +109,7 @@ def action(deviceName, action):
         'RELAY7' : r7stat,
         'RELAY8' : r8stat,
     }
-    return render_template('index.html', **templateData)
+    return render_template('index8.html', **templateData)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True)
