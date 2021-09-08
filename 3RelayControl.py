@@ -24,8 +24,8 @@ pi.set_mode(BUTTON2,pigpio.OUTPUT)
 pi.set_mode(BUTTON3,pigpio.OUTPUT)
 
 pi.write(RELAY1, 1)
-pi.write(RELAY1, 1)
-pi.write(RELAY1, 1)
+pi.write(RELAY2, 1)
+pi.write(RELAY3, 1)
 
 @app.route("/")
 def index():
