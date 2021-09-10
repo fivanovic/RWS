@@ -1,9 +1,9 @@
 from flask import Flask, render_template, request
 import pigpio
 import smbus
-import relay8
+import lib8relind
 
-#pi = pigpio.pi()
+pi = pigpio.pi()
 app = Flask(__name__)
 
 RELAY1 = 1
@@ -87,19 +87,19 @@ def action(deviceName, action):
         button = BUTTON8
 
     if action == "on":
-        relay8.set(0,1,1)
+        lib8relind.set(0,1,1)
         #pi.gpio_trigger(button,10,1)
     if action == "off":
-        relay8.set(0,relay,0)
+        lib8relind.set(0,relay,0)
 
-    #r1stat = pi.read(RELAY1)
-    #r2stat = pi.read(RELAY2)
-    #r3stat = pi.read(RELAY3)
-    #r4stat = pi.read(RELAY4)
-    #r5stat = pi.read(RELAY5)
-    #r6stat = pi.read(RELAY6)
-    #r7stat = pi.read(RELAY7)
-    #r8stat = pi.read(RELAY8)
+    r1stat = pi.read(RELAY1)
+    r2stat = pi.read(RELAY2)
+    r3stat = pi.read(RELAY3)
+    r4stat = pi.read(RELAY4)
+    r5stat = pi.read(RELAY5)
+    r6stat = pi.read(RELAY6)
+    r7stat = pi.read(RELAY7)
+    r8stat = pi.read(RELAY8)
 
     templateData = {
         'RELAY1' : r1stat,
