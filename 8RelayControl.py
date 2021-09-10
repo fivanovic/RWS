@@ -25,8 +25,8 @@ r7stat = 1
 r8stat = 1
 
 
-BUTTON1 = 10
-BUTTON2 = 11
+BUTTON1 = 2
+BUTTON2 = 3
 BUTTON3 = 4
 BUTTON4 = 5
 BUTTON5 = 6
@@ -34,14 +34,14 @@ BUTTON6 = 7
 BUTTON7 = 8
 BUTTON8 = 9
 
-pi.set_mode(BUTTON1,pigpio.OUTPUT)
-pi.set_mode(BUTTON2,pigpio.OUTPUT)
-pi.set_mode(BUTTON3,pigpio.OUTPUT)
-pi.set_mode(BUTTON4,pigpio.OUTPUT)
-pi.set_mode(BUTTON5,pigpio.OUTPUT)
-pi.set_mode(BUTTON6,pigpio.OUTPUT)
-pi.set_mode(BUTTON7,pigpio.OUTPUT)
-pi.set_mode(BUTTON8,pigpio.OUTPUT)
+#pi.set_mode(BUTTON1,pigpio.OUTPUT)
+#pi.set_mode(BUTTON2,pigpio.OUTPUT)
+#pi.set_mode(BUTTON3,pigpio.OUTPUT)
+#pi.set_mode(BUTTON4,pigpio.OUTPUT)
+#pi.set_mode(BUTTON5,pigpio.OUTPUT)
+#pi.set_mode(BUTTON6,pigpio.OUTPUT)
+#pi.set_mode(BUTTON7,pigpio.OUTPUT)
+#pi.set_mode(BUTTON8,pigpio.OUTPUT)
 
 
 @app.route("/")
