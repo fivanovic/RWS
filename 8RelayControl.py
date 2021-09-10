@@ -87,7 +87,7 @@ def action(deviceName, action):
         button = BUTTON8
 
     if action == "on":
-        relay8.set(0,relay,1)
+        relay8.set(0,1,1)
         pi.gpio_trigger(button,10,1)
     if action == "off":
         relay8.set(0,relay,0)
