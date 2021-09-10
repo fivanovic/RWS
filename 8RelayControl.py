@@ -36,12 +36,12 @@ BUTTON8 = 9
 
 #pi.set_mode(BUTTON1,pigpio.OUTPUT)
 #pi.set_mode(BUTTON2,pigpio.OUTPUT)
-pi.set_mode(BUTTON3,pigpio.OUTPUT)
-pi.set_mode(BUTTON4,pigpio.OUTPUT)
-pi.set_mode(BUTTON5,pigpio.OUTPUT)
-pi.set_mode(BUTTON6,pigpio.OUTPUT)
-pi.set_mode(BUTTON7,pigpio.OUTPUT)
-pi.set_mode(BUTTON8,pigpio.OUTPUT)
+#pi.set_mode(BUTTON3,pigpio.OUTPUT)
+#pi.set_mode(BUTTON4,pigpio.OUTPUT)
+#pi.set_mode(BUTTON5,pigpio.OUTPUT)
+#pi.set_mode(BUTTON6,pigpio.OUTPUT)
+#pi.set_mode(BUTTON7,pigpio.OUTPUT)
+#pi.set_mode(BUTTON8,pigpio.OUTPUT)
 
 
 @app.route("/")
@@ -88,7 +88,7 @@ def action(deviceName, action):
 
     if action == "on":
         relay8.set(0,1,1)
-        pi.gpio_trigger(button,10,1)
+        #pi.gpio_trigger(button,10,1)
     if action == "off":
         relay8.set(0,relay,0)
 
