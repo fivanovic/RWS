@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request
 import pigpio
-import relay8-rpi
 import smbus
+import relay8_rpi
+
 pi = pigpio.pi()
 app = Flask(__name__)
 
