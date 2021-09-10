@@ -25,8 +25,8 @@ r7stat = 1
 r8stat = 1
 
 
-BUTTON1 = 2
-BUTTON2 = 3
+BUTTON1 = 10
+BUTTON2 = 11
 BUTTON3 = 4
 BUTTON4 = 5
 BUTTON5 = 6
