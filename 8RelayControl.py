@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 import pigpio
-import lib8relind
+import relay8
 pi = pigpio.pi()
 app = Flask(__name__)
 
@@ -85,10 +85,10 @@ def action(deviceName, action):
         button = BUTTON8
 
     if action == "on":
-        lib8relind.set(0,1,1)
+        relay8.set(0,relay,1)
         pi.gpio_trigger(button,10,1)
     if action == "off":
-        lib8relind.set(0,relay,0)
+        relay8.set(0,relay,0)
 
     r1stat = pi.read(RELAY1)
     r2stat = pi.read(RELAY2)
