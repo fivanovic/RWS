@@ -34,8 +34,8 @@ BUTTON6 = 7
 BUTTON7 = 8
 BUTTON8 = 9
 
-pi.set_mode(BUTTON1,pigpio.OUTPUT)
-pi.set_mode(BUTTON2,pigpio.OUTPUT)
+#pi.set_mode(BUTTON1,pigpio.OUTPUT)
+#pi.set_mode(BUTTON2,pigpio.OUTPUT)
 pi.set_mode(BUTTON3,pigpio.OUTPUT)
 pi.set_mode(BUTTON4,pigpio.OUTPUT)
 pi.set_mode(BUTTON5,pigpio.OUTPUT)
