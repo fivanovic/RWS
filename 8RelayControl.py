@@ -6,33 +6,40 @@ import lib8relind
 pi = pigpio.pi()
 app = Flask(__name__)
 
-RELAY1 = 8
-RELAY2 = 7
-RELAY3 = 6
-RELAY4 = 5
-RELAY5 = 4
-RELAY6 = 3
-RELAY7 = 2
-RELAY8 = 1
+class Relay:
+    def __init__(self, numb, button, status, id):
+        self.numb = numb
+        self.button = button
+        self.status = status
+        self.id = id
 
-r1stat = 1
-r2stat = 1
-r3stat = 1
-r4stat = 1
-r5stat = 1
-r6stat = 1
-r7stat = 1
-r8stat = 1
-
+RELAY1 = 1
+RELAY2 = 2
+RELAY3 = 3
+RELAY4 = 4
+RELAY5 = 5
+RELAY6 = 6
+RELAY7 = 7
+RELAY8 = 8
 
 BUTTON1 = 10
-BUTTON2 = 11
-BUTTON3 = 4
-BUTTON4 = 5
-BUTTON5 = 6
-BUTTON6 = 7
-BUTTON7 = 8
-BUTTON8 = 9
+BUTTON1 = 11
+BUTTON1 = 12
+BUTTON1 = 13
+BUTTON1 = 14
+BUTTON1 = 15
+BUTTON1 = 16
+BUTTON1 = 17
+
+R1 = Relay(RELAY1,BUTTON1,"Off",1)
+R2 = Relay(RELAY2,BUTTON2,"Off",2)
+R3 = Relay(RELAY3,BUTTON3,"Off",3)
+R4 = Relay(RELAY4,BUTTON1,"Off",4)
+R5 = Relay(RELAY5,BUTTON2,"Off",5)
+R6 = Relay(RELAY6,BUTTON3,"Off",6)
+R7 = Relay(RELAY7,BUTTON1,"Off",7)
+R8 = Relay(RELAY8,BUTTON2,"Off",8)
+
 
 pi.set_mode(BUTTON1,pigpio.OUTPUT)
 pi.set_mode(BUTTON2,pigpio.OUTPUT)
@@ -48,68 +55,54 @@ pi.set_mode(BUTTON8,pigpio.OUTPUT)
 def index():
     templateData = {
         'title' : 'Relay Status',
-        'RELAY1' : r1stat,
-        'RELAY2' : r2stat,
-        'RELAY3' : r3stat,
-        'RELAY4' : r4stat,
-        'RELAY5' : r5stat,
-        'RELAY6' : r6stat,
-        'RELAY7' : r7stat,
-        'RELAY8' : r8stat,
+        'RELAY1' : R1.status,
+        'RELAY2' : R2.status,
+        'RELAY3' : R3.status,
+        'RELAY4' : R4.status,
+        'RELAY5' : R5.status,
+        'RELAY6' : R6.status,
+        'RELAY7' : R7.status,
+        'RELAY8' : R8.status,
     }
     return render_template('index8.html', **templateData)
 
 @app.route("/<deviceName>/<action>")
 def action(deviceName, action):
     if deviceName == 'RELAY1':
-        relay = RELAY1
-        button = BUTTON1
+        relay = R1
     if deviceName == 'RELAY2':
-        relay = RELAY2
-        button = BUTTON2
+        relay = R2
     if deviceName == 'RELAY3':
-        relay = RELAY3
-        button = BUTTON3
+        relay = R3
     if deviceName == 'RELAY4':
-        relay = RELAY4
-        button = BUTTON4
+        relay = R4
     if deviceName == 'RELAY5':
-        relay = RELAY5
-        button = BUTTON5
+        relay = R5
     if deviceName == 'RELAY6':
-        relay = RELAY6
-        button = BUTTON6
+        relay = R6
     if deviceName == 'RELAY7':
-        relay = RELAY7
-        button = BUTTON7
+        relay = R7
     if deviceName == 'RELAY8':
-        relay = RELAY8
-        button = BUTTON8
+        relay = R8
 
     if action == "on":
-        lib8relind.set(0,relay,1)
-        pi.gpio_trigger(button,10,1)
-    if action == "off":
-        lib8relind.set(0,relay,0)
+        lib8relind.set(0,relay.numb,1)
+        pi.gpio_trigger(relay.button,10,1)
+        relay.status = "On"
 
-    r1stat = pi.read(RELAY1)
-    r2stat = pi.read(RELAY2)
-    r3stat = pi.read(RELAY3)
-    r4stat = pi.read(RELAY4)
-    r5stat = pi.read(RELAY5)
-    r6stat = pi.read(RELAY6)
-    r7stat = pi.read(RELAY7)
-    r8stat = pi.read(RELAY8)
+    if action == "off":
+        lib8relind.set(0,relay.numb,0)
+        relay.status = "Off"
 
     templateData = {
-        'RELAY1' : r1stat,
-        'RELAY2' : r2stat,
-        'RELAY3' : r3stat,
-        'RELAY4' : r4stat,
-        'RELAY5' : r5stat,
-        'RELAY6' : r6stat,
-        'RELAY7' : r7stat,
-        'RELAY8' : r8stat,
+        'RELAY1' : R1.status,
+        'RELAY2' : R2.status,
+        'RELAY3' : R3.status,
+        'RELAY4' : R4.status,
+        'RELAY5' : R5.status,
+        'RELAY6' : R6.status,
+        'RELAY7' : R7.status,
+        'RELAY8' : R8.status,
     }
     return render_template('index8.html', **templateData)
 
