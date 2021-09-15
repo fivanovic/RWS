@@ -22,21 +22,21 @@ def pusher(relay):
     global R6
     global R7
     global R8
-    if relay.numb == R1.numb
+    if relay.numb == R1.numb:
         R1.status = relay.status
-    elif relay.numb == R2.numb
+    elif relay.numb == R2.numb:
         R2.status = relay.status
-    elif relay.numb == R3.numb
+    elif relay.numb == R3.numb:
         R3.status = relay.status
-    elif relay.numb == R4.numb
+    elif relay.numb == R4.numb:
         R4.status = relay.status
-    elif relay.numb == R5.numb
+    elif relay.numb == R5.numb:
         R5.status = relay.status
-    elif relay.numb == R6.numb
+    elif relay.numb == R6.numb:
         R6.status = relay.status
-    elif relay.numb == R7.numb
+    elif relay.numb == R7.numb:
         R7.status = relay.status
-    elif relay.numb == R8.numb
+    elif relay.numb == R8.numb:
         R8.status = relay.status
 
 RELAY1 = 1
