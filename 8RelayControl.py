@@ -13,6 +13,32 @@ class Relay:
         self.status = status
         self.id = id
 
+def pusher(relay):
+    global R1
+    global R2
+    global R3
+    global R4
+    global R5
+    global R6
+    global R7
+    global R8
+    if relay.numb == R1.numb
+        R1.status = relay.status
+    elif relay.numb == R2.numb
+        R2.status = relay.status
+    elif relay.numb == R3.numb
+        R3.status = relay.status
+    elif relay.numb == R4.numb
+        R4.status = relay.status
+    elif relay.numb == R5.numb
+        R5.status = relay.status
+    elif relay.numb == R6.numb
+        R6.status = relay.status
+    elif relay.numb == R7.numb
+        R7.status = relay.status
+    elif relay.numb == R8.numb
+        R8.status = relay.status
+
 RELAY1 = 1
 RELAY2 = 2
 RELAY3 = 3
@@ -89,10 +115,12 @@ def action(deviceName, action):
         lib8relind.set(0,relay.numb,1)
         pi.gpio_trigger(relay.button,10,1)
         relay.status = "On"
+        pusher(relay)
 
     if action == "off":
         lib8relind.set(0,relay.numb,0)
         relay.status = "Off"
+        pusher(relay)
 
     templateData = {
         'RELAY1' : R1.status,
