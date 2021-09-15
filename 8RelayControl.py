@@ -38,7 +38,7 @@ R4 = Relay(RELAY4,BUTTON4,"Off",4)
 R5 = Relay(RELAY5,BUTTON5,"Off",5)
 R6 = Relay(RELAY6,BUTTON6,"Off",6)
 R7 = Relay(RELAY7,BUTTON7,"Off",7)
-R8 = Relay(RELAY8,BUTTON28,"Off",8)
+R8 = Relay(RELAY8,BUTTON8,"Off",8)
 
 
 pi.set_mode(BUTTON1,pigpio.OUTPUT)
