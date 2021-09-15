@@ -39,14 +39,14 @@ def pusher(relay):
     elif relay.numb == R8.numb:
         R8.status = relay.status
 
-RELAY1 = 1
-RELAY2 = 2
-RELAY3 = 3
-RELAY4 = 4
-RELAY5 = 5
-RELAY6 = 6
-RELAY7 = 7
-RELAY8 = 8
+RELAY1 = 8
+RELAY2 = 7
+RELAY3 = 6
+RELAY4 = 5
+RELAY5 = 4
+RELAY6 = 3
+RELAY7 = 2
+RELAY8 = 1
 
 BUTTON1 = 10
 BUTTON2 = 11
