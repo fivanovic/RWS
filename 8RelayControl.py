@@ -23,13 +23,21 @@ def toggle:
     global R7
     global R8
     lib8relind.set(0,R1.numb,0)
+    R1.status = "Off"
     lib8relind.set(0,R2.numb,0)
+    R2.status = "Off"
     lib8relind.set(0,R3.numb,0)
+    R3.status = "Off"
     lib8relind.set(0,R4.numb,0)
+    R4.status = "Off"
     lib8relind.set(0,R5.numb,0)
+    R5.status = "Off"
     lib8relind.set(0,R6.numb,0)
+    R6.status = "Off"
     lib8relind.set(0,R7.numb,0)
+    R7.status = "Off"
     lib8relind.set(0,R8.numb,0)
+    R8.status = "Off"
 
 def pusher(relay):
     global R1
