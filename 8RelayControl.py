@@ -13,6 +13,24 @@ class Relay:
         self.status = status
         self.id = id
 
+def toggle:
+    global R1
+    global R2
+    global R3
+    global R4
+    global R5
+    global R6
+    global R7
+    global R8
+    lib8relind.set(0,R1.numb,0)
+    lib8relind.set(0,R2.numb,0)
+    lib8relind.set(0,R3.numb,0)
+    lib8relind.set(0,R4.numb,0)
+    lib8relind.set(0,R5.numb,0)
+    lib8relind.set(0,R6.numb,0)
+    lib8relind.set(0,R7.numb,0)
+    lib8relind.set(0,R8.numb,0)
+
 def pusher(relay):
     global R1
     global R2
@@ -66,7 +84,6 @@ R6 = Relay(RELAY6,BUTTON6,"Off",6)
 R7 = Relay(RELAY7,BUTTON7,"Off",7)
 R8 = Relay(RELAY8,BUTTON8,"Off",8)
 
-
 pi.set_mode(BUTTON1,pigpio.OUTPUT)
 pi.set_mode(BUTTON2,pigpio.OUTPUT)
 pi.set_mode(BUTTON3,pigpio.OUTPUT)
@@ -112,6 +129,7 @@ def action(deviceName, action):
         relay = R8
 
     if action == "on":
+        toggle()
         lib8relind.set(0,relay.numb,1)
         pi.gpio_trigger(relay.button,10,1)
         relay.status = "On"
