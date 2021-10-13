@@ -21,8 +21,8 @@ pi.set_mode(BUTTON8,pigpio.OUTPUT)
 
 while True:
 
-    pi.write(BUTTON1,10,1)
+    pi.write(BUTTON1,1)
     print('Button on')
     time.sleep(5)
-    pi.write(BUTTON1,10,0)
+    pi.write(BUTTON1,0)
     print('Button off')
