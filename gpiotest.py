@@ -26,3 +26,4 @@ while True:
     time.sleep(5)
     pi.write(BUTTON1,0)
     print('Button off')
+    time.sleep(5)
