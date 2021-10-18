@@ -13,7 +13,7 @@ class Relay:
         self.status = status
         self.id = id
 
-def toggle:
+def toggle():
     global R1
     global R2
     global R3
