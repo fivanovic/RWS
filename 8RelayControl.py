@@ -141,7 +141,7 @@ def action(deviceName, action):
         lib8relind.set(0,relay.numb,1)
         pi.write(relay.button,1)
         time.sleep(2)
-        pi.write(relay.button.0)
+        pi.write(relay.button,0)
         relay.status = "On"
         pusher(relay)
 
