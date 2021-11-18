@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import pigpio
 import smbus
 import lib8relind
+import time
 
 pi = pigpio.pi()
 app = Flask(__name__)
