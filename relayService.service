@@ -1,0 +1,11 @@
+[Unit]
+Description=Pi 8 Relay Controller
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python2 /home/RWS/8RelayControl.py
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
