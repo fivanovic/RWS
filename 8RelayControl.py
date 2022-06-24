@@ -4,10 +4,15 @@ import smbus
 import lib8relind
 import time
 
+#Defining a name for the GPIO control library
 pi = pigpio.pi()
+#Defining name for flask server
 app = Flask(__name__)
 
+
 class Relay:
+    #This class defines the Relay object.
+    #The object contains the unique ID, the relay number, the button it is assigned to control and its status
     def __init__(self, numb, button, status, id):
         self.numb = numb
         self.button = button
@@ -15,6 +20,7 @@ class Relay:
         self.id = id
 
 def toggle():
+    #The toggle function forces all relays to turn off
     global R1
     global R2
     global R3
@@ -41,6 +47,7 @@ def toggle():
     R8.status = "Off"
 
 def pusher(relay):
+    #The pusher function updates the status of the relay currently being accessed
     global R1
     global R2
     global R3
@@ -84,6 +91,7 @@ BUTTON6 = 15
 BUTTON7 = 16
 BUTTON8 = 17
 
+#8 Relay objects are defined to match the 8 relays on the board
 R1 = Relay(RELAY1,BUTTON1,"Off",1)
 R2 = Relay(RELAY2,BUTTON2,"Off",2)
 R3 = Relay(RELAY3,BUTTON3,"Off",3)
@@ -93,6 +101,7 @@ R6 = Relay(RELAY6,BUTTON6,"Off",6)
 R7 = Relay(RELAY7,BUTTON7,"Off",7)
 R8 = Relay(RELAY8,BUTTON8,"Off",8)
 
+#The GPIO pins for the 8 buttons are set to output mode
 pi.set_mode(BUTTON1,pigpio.OUTPUT)
 pi.set_mode(BUTTON2,pigpio.OUTPUT)
 pi.set_mode(BUTTON3,pigpio.OUTPUT)
@@ -105,6 +114,7 @@ pi.set_mode(BUTTON8,pigpio.OUTPUT)
 
 @app.route("/")
 def index():
+    #a basic template for the status portion of the webserver
     templateData = {
         'title' : 'Relay Status',
         'RELAY1' : R1.status,
@@ -120,6 +130,7 @@ def index():
 
 @app.route("/<deviceName>/<action>")
 def action(deviceName, action):
+    #Points to the accessed relay based on the name and states what operation is being performed on it
     if deviceName == 'RELAY1':
         relay = R1
     if deviceName == 'RELAY2':
@@ -138,12 +149,17 @@ def action(deviceName, action):
         relay = R8
 
     if action == "on":
+        #all relays shut off
         toggle()
+        #target relay is turned on
         lib8relind.set(0,relay.numb,1)
+        #the 'button' is pressed for 1 second
         pi.write(relay.button,1)
         time.sleep(1)
         pi.write(relay.button,0)
+        #relay status is updated
         relay.status = "On"
+        #the status of the relay is pushed to its object
         pusher(relay)
 
     if action == "off":
@@ -152,6 +168,7 @@ def action(deviceName, action):
         pusher(relay)
 
     templateData = {
+        #the template is updated with the updated status of all relays
         'RELAY1' : R1.status,
         'RELAY2' : R2.status,
         'RELAY3' : R3.status,
@@ -164,4 +181,5 @@ def action(deviceName, action):
     return render_template('index8.html', **templateData)
 
 if __name__ == "__main__":
+    #running the flask server on  the local IP and port 5000
     app.run(host='0.0.0.0', port=5000, debug=True)
